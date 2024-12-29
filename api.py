@@ -13,12 +13,18 @@ logger = logging.getLogger(__name__)
 @app.post("/upload/")
 async def upload_image(file: UploadFile = File(...)):
     try:
+        logger.info("1 log")
+        print("1 print")
         # Ensure the temp directory exists
         temp_dir = "../temp"
         os.makedirs(temp_dir, exist_ok=True)
+        logger.info("2 log")
+        print("2 print")
 
         # Save the uploaded file
         file_location = os.path.join(temp_dir, file.filename)
+        logger.info(file_location)
+        print(file_location)
         with open(file_location, "wb") as f:
             f.write(await file.read())
 
