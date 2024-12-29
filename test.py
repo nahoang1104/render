@@ -15,6 +15,13 @@ def process_image(image_path):
     image = cv2.imread(image_path)
     if image is None:
         raise ValueError(f"Image not found or unable to load: {image_path}")
+    
+    height, width = image.shape[:2]  # Get the current dimensions of the image
+    new_width = int(width * 50 / 100)  # Calculate new width
+    new_height = int(height * 50 / 100)  # Calculate new height
+    # Resize the image
+    image = cv2.resize(image, (new_width, new_height))
+
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
     # Perform OCR on the image
