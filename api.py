@@ -13,19 +13,15 @@ logger = logging.getLogger(__name__)
 @app.post("/upload/")
 async def upload_image(file: UploadFile = File(...)):
     try:
-        logger.info("1 log")
-        print("1 print")
         # Ensure the temp directory exists
         temp_dir = "../temp"
         os.makedirs(temp_dir, exist_ok=True)
-        logger.info("2 log")
-        print("2 print")
 
         # Save the uploaded file
         file_location = os.path.join(temp_dir, file.filename)
         logger.info(file_location)
-        print(file_location)
         with open(file_location, "wb") as f:
+            print("opened file")
             f.write(await file.read())
 
         # Process the image using the existing OCR functionality
@@ -35,6 +31,7 @@ async def upload_image(file: UploadFile = File(...)):
         os.remove(file_location)
 
         logger.info(f"Detected text: {detected_text}")
+        print(detected_text)
 
         return JSONResponse(content={"detected_text": detected_text})
 
