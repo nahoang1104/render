@@ -5,8 +5,8 @@ import cv2
 
 # Initialize PaddleOCR
 ocr = PaddleOCR(
-    det_model_dir='/app/models/final_det_inference',  # Model detection
-    rec_model_dir='/app/models/ch_PP-OCRv3_rec_infer',  # Model recognition
+    det_model_dir='models/final_det_inference',  # Model detection
+    rec_model_dir='models/ch_PP-OCRv3_rec_infer',  # Model recognition
     use_gpu=False  # Set to True if using GPU
 )
 
@@ -15,13 +15,12 @@ def process_image(image_path):
     image = cv2.imread(image_path)
     if image is None:
         raise ValueError(f"Image not found or unable to load: {image_path}")
-    print(image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    print(image)
 
     # Perform OCR on the image
     results = ocr.ocr(image)
     print(results)
+    print("a")
 
     # Extract detected text
     detected_text = [line[1][0] for line in results[0]]
