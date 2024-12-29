@@ -17,17 +17,17 @@ def process_image(image_path):
         raise ValueError(f"Image not found or unable to load: {image_path}")
     
     height, width = image.shape[:2]  # Get the current dimensions of the image
-    new_width = int(width * 50 / 100)  # Calculate new width
-    new_height = int(height * 50 / 100)  # Calculate new height
+    new_width = int(width * 75 / 100)  # Calculate new width
+    new_height = int(height * 75 / 100)  # Calculate new height
     # Resize the image
-    image = cv2.resize(image, (new_width, new_height))
+    image = cv2.resize(image, (new_width, new_height), interpolation=cv2.INTER_AREA)
 
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    print(image.shape)
 
     # Perform OCR on the image
     results = ocr.ocr(image)
     print(results)
-    print("a")
 
     # Extract detected text
     detected_text = [line[1][0] for line in results[0]]
