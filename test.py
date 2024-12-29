@@ -5,8 +5,8 @@ import cv2
 
 # Initialize PaddleOCR
 ocr = PaddleOCR(
-    det_model_dir='models/final_det_inference',  # Model detection
-    rec_model_dir='models/ch_PP-OCRv3_rec_infer',  # Model recognition
+    det_model_dir='../models/final_det_inference',  # Model detection
+    rec_model_dir='../models/ch_PP-OCRv3_rec_infer',  # Model recognition
     use_gpu=False  # Set to True if using GPU
 )
 
