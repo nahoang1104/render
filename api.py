@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 @app.post("/upload/")
 async def upload_image(file: UploadFile = File(...)):
     try:
+        return JSONResponse(content={"connected"})
         # Ensure the temp directory exists
         temp_dir = "../temp"
         os.makedirs(temp_dir, exist_ok=True)
