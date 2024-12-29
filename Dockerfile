@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y \
     libxrender1 \
     libxext6 \
     libgomp1 \
-    libgl1-mesa-glx \  # Add the OpenGL library
+    libgl1-mesa-glx \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy the current directory contents into the container at /app
