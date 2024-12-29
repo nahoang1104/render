@@ -14,11 +14,14 @@ def process_image(image_path):
     # Load the image
     image = cv2.imread(image_path)
     if image is None:
+        print("none")
         raise ValueError(f"Image not found or unable to load: {image_path}")
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    print("cv2")
 
     # Perform OCR on the image
     results = ocr.ocr(image)
+    print(results)
 
     # Extract detected text
     detected_text = [line[1][0] for line in results[0]]

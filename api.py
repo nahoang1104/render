@@ -21,7 +21,6 @@ async def upload_image(file: UploadFile = File(...)):
         file_location = os.path.join(temp_dir, file.filename)
         logger.info(file_location)
         with open(file_location, "wb") as f:
-            print("opened file")
             f.write(await file.read())
 
         # Process the image using the existing OCR functionality
