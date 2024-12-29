@@ -1,0 +1,10 @@
+Flask
+Pillow
+paddleocr
+matplotlib
+numpy
+uvicorn
+fastapi
+python-multipart
+paddlepaddle
+opencv-python-headless
